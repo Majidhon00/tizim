@@ -1,0 +1,81 @@
+.delete{
+  position: relative;
+  width: 50px;
+  height: 50px;
+  background: rgb(255, 0, 0);
+  border-radius: 4px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  transition: 0.5s;
+  box-shadow: 0 5px 20px rgba(0, 0, 0, 0.1);
+  overflow: hidden;
+  text-decoration: none;
+}
+.delete span{
+  position: absolute;
+  left: 17px;
+  width: 18px;
+  height: 18px;
+  display: inline-block;
+  background: #fff;
+  border-bottom-left-radius: 3px;
+  border-bottom-right-radius: 3px;
+  transition: 0.5s;
+
+}
+.delete span::before{
+  content: '';
+  position: absolute;
+  top: -3px;
+  width: 100%;
+  height: 2px;
+  background: #fff;
+  box-shadow: 12px -2px rgb(245, 1, 1),12px -3px 0 rgb(255, 0, 0),15px -1px 0 rgb(255, 0, 0), 6px -2px 0 #fff; 
+  transition: 0.5s;
+
+}
+.delete:hover span{
+  transform: scale(1.5) rotate(60deg) translateY(10px);
+}
+.delete:hover span::before{
+  transform: rotate(-90deg) translateX(50%) translateY(-10px)
+}
+.delete p{
+  position: absolute;
+  right: 40px;
+  color: #fff;
+  transition: 0.5s;
+  top: 12px;
+}
+.delete:hover p{
+  transform: translateX(-50px) translateY(-5px) scale(0)
+}
+.d-f{
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr ;
+}
+
+.pil i{
+  transition: 0.5s;
+}
+.pil:hover i{
+  transform: rotate(90deg);
+  transition: 0.5s;
+
+}
+.ser{
+  widows: 300px !important;
+  border:  0px solid blue ;
+  border-radius: 15px;
+  background-color: #3f50f690 ; 
+  padding: 5px 15px;
+  color: aliceblue;
+  margin-left: -20px;
+}
+.ser::placeholder{
+  color: #fff;
+}
+.form-control-icon{
+  margin-right:100px;
+}
