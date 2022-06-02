@@ -19,7 +19,9 @@ class CreateKirimsTable extends Migration
             $table->integer('tur_id');
             $table->integer('cat_id');
             $table->integer('miqdor');
+            $table->integer('v_soni')->nullable();
             $table->string('tip');
+            $table->string('date')->nullable();
             $table->timestamps();
         });
     }
