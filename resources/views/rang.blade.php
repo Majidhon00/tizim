@@ -55,6 +55,7 @@
                                 @foreach ($bazas as $baza)
                                     @if (isset($baza->tur->kat->cat))
                                         <tr>
+                                            <h2>salom</h2>
                                             <td class="border-top-0 p-2">
                                                 <div class="d-flex no-block align-items-center">
                                                     <div class="">
@@ -94,9 +95,9 @@
                                                         class="fas fa-trash"></i></a>
                                             </td>
                                         </tr>
-                                    @else
+                                    @else 
                                         <tr>
-
+                                        <h2></h2>
                                             <td class="border-top-0 p-2">
                                                 <div class="d-flex no-block align-items-center">
                                                     <div class="">

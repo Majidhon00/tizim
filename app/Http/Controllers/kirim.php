@@ -45,7 +45,7 @@ class kirim extends Controller
         $baza = rang::find($id);
         return view('chqim',['kirim'=>$baza]);
     }
-    /** 
+    /**  
      * Store a newly created resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
@@ -93,13 +93,12 @@ class kirim extends Controller
             return back()->with('success' , 'Siz manfiy son kirityapsiz');
         }
         else{
-
             $kirim->miqdori = $kirim->miqdori+$request->miqdor;
             $kirim->rang = $kirim->rang;
             $kirim->rulon = $kirim->rulon+$request->r_soni;
             $kirim->tur_id = $kirim->tur_id;
-        $kirim->cat_id = $kirim->cat_id;
-        $kirim->update();
+            $kirim->cat_id = $kirim->cat_id;
+            $kirim->update();
 
         $baza = new ModelsKirim();
   
