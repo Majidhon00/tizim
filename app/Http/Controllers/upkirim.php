@@ -47,7 +47,7 @@ class upkirim extends Controller
      */
     public function show($id)
     {
-        //
+        //show
     }
 
     /**

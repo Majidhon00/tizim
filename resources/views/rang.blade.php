@@ -10,7 +10,7 @@
 
     .form-inlin select {
         width: 200px;
-    }
+    } 
 
     .mr-2 {
         padding-left: 50px !important;
@@ -19,7 +19,7 @@
 </style>
 @extends('layout')
 <link rel="stylesheet" href="{{ asset('css/delete.css') }}">
-@section('content')
+@section('content') 
     <div class="row">
         <div class="col-12">
             <div class="card">
@@ -55,6 +55,7 @@
                                 @foreach ($bazas as $baza)
                                     @if (isset($baza->tur->kat->cat))
                                         <tr>
+                                            <h2>salom</h2>
                                             <td class="border-top-0 p-2">
                                                 <div class="d-flex no-block align-items-center">
                                                     <div class="">
@@ -93,9 +94,9 @@
                                                         class="fas fa-trash"></i></a>
                                             </td>
                                         </tr>
-                                    @else
+                                    @else 
                                         <tr>
-
+                                        <h2></h2>
                                             <td class="border-top-0 p-2">
                                                 <div class="d-flex no-block align-items-center">
                                                     <div class="">

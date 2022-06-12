@@ -53,7 +53,7 @@ class kirim extends Controller
     public function store(Request $request, rang $kirim)
     {
     }
-
+    
     /**
      * Display the specified resource.
      *
