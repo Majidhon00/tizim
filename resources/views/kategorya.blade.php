@@ -63,6 +63,7 @@
                             @endforeach
                         </tbody>
                     </table>
+                    {{ $bazas->links() }}
                 </div>
             </div>
         </div>
@@ -85,7 +86,7 @@
             }
             $.ajax({
                 url: "{{ route('ajaxkat') }}",
-                method: 'post',
+                method: 'post', 
             data: {
                 cata: $(".ser").val(),
                 catb: $(".ser2").val()

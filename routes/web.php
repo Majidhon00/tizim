@@ -26,7 +26,7 @@ Route::get('/', function () {
 Route::get('/index', function () {
     return view('in');
 });
- 
+  
 // show tug'irleman
 
 Route::resource('admin',in1Contrller::class); 

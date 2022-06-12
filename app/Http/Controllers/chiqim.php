@@ -15,7 +15,7 @@ class chiqim extends Controller
      */
     public function index()
     {
-        //
+        // 
     }
 
     /**

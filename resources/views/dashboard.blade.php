@@ -12,10 +12,10 @@
 @endsection
 @section('content')    
 <div class="row">
-    <div class="col-12">
+    <div class="col-12"> 
         <div class="card">
             <div class="card-body">
-                <h4 class="card-title mb-4">Top Leaders</h4>
+                <h4 class="card-title mb-4">Top</h4>
                 <div class="table-responsive">
                     <table class="table no-wrap v-middle mb-0">
                         <thead>
@@ -74,12 +74,16 @@
                     </table>
                 </div>
             </div>
+     
+                {{ $bazas->links() }}
+
         </div>
     </div>
 </div>
 <script src="{{ asset('help/jquery.js') }}"></script>
 <script>
     $(function(){
+        $(".hi").show();
           $.ajaxSetup({
                 headers: {
                     'X-CSRF-TOKEN': $('meta[name="_token"]').attr('content')
@@ -94,6 +98,7 @@
                     },
                     success: function (result) {
                         $(".area").empty();
+                        $(".hi").hide();
                         result.turlar.forEach(tura)
                         
                         function tura(item,index) 

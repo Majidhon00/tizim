@@ -17,11 +17,11 @@ class in1Contrller extends Controller
      */
     public function index()
     {
+ 
+        // $kirimlar = kirim::where('kirims.tur_id','=','turs.id')->get();
+        $bazas = tur::paginate(10);
 
-        $kirimlar = kirim::all();
-        $bazas = tur::all();
-
-        return view('dashboard',['bazas'=>$bazas,'kirims'=>$kirimlar]);
+        return view('dashboard',['bazas'=>$bazas]);
     }
 
     /**     
@@ -31,7 +31,7 @@ class in1Contrller extends Controller
      */
     public function create()
     {
-        $blogs = cat::all(); 
+        $blogs = cat::orderBy('id','DESC')->get(); 
         return view('create.in1_create',['blogs'=>$blogs]);
     }
 
@@ -67,7 +67,7 @@ class in1Contrller extends Controller
      */
     public function edit(tur $admin)
     {
-        $blog = cat::all();
+        $blog = cat::orderBy('id','DESC')->get();
         return view('update.tur',['bazas'=>$admin ,'blogs'=>$blog]);
     }
 
@@ -102,12 +102,12 @@ class in1Contrller extends Controller
     }
     public function ajaxtur(Request $request)
     {
-        $baza = tur::join('cats','cats.id','=','turs.cat_id')->where('turi','LIKE',"%{$request->tur}%")->get();
+        $baza = tur::join('cats','cats.id','=','turs.cat_id')->where('turi','LIKE',"%{$request->tur}%")->limit(10)->get();
         return response()->json(['turlar'=>$baza]);
     }
     public function adminedit(tur $id)
     {
-        $blog = cat::all();
+        $blog = cat::orderBy('id','DESC')->get();
         return view('update.tur',['bazas'=>$id ,'blogs'=>$blog]);
     }
 }

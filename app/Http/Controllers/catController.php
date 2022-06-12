@@ -9,13 +9,13 @@ use Illuminate\Support\Facades\DB;
 class catController extends Controller
 {
     /**
-     * Display a listing of the resource.
+     * Di splay a listing of the resource.
      *
      * @return \Illuminate\Http\Response
      */
     public function index()
     {
-        $baza = cat::all();
+        $baza = cat::paginate(10);
         return view('kategorya',['bazas'=>$baza]);
     }
 
@@ -96,11 +96,11 @@ class catController extends Controller
     {
         if($request->catb=='all')
         {
-            $cats = cat::all();
+            $cats = cat::orderBy('id','DESC')->get();
         }   
         if($request->cata=='all')
         {
-            $cats = cat::all();
+            $cats = cat::orderBy('id','DESC')->get();
         } else
         {
             $cats = cat::where('cat','LIKE',"%{$request->cata}%")->get();    

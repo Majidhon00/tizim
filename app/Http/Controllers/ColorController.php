@@ -16,8 +16,8 @@ class ColorController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function index()
-    {
-        $baza = rang::all();
+    { 
+        $baza = rang::join('turs','turs.id','=','rangs.tur_id')->join('cats','cats.id','=','rangs.cat_id')->paginate(10);
         return view('color',['bazas'=>$baza]);
     }
 
@@ -60,7 +60,7 @@ class ColorController extends Controller
      */
     public function edit(rang $id)
     {
-        $cat = cat::all();
+        $cat = cat::orderBy('id','DESC')->get();
         return view('update.color',['color'=>$id,'cats'=>$cat]);
     }
 
@@ -84,11 +84,12 @@ class ColorController extends Controller
      */
     public function destroy($id)
     {
-        //
+        // 90 556 61 13
     }
     public function ajaxcolor(Request $request)
     {
-        $baza = DB::select("select * from rangs left join turs on turs.id=rangs.tur_id left join cats on cats.id=turs.cat_id where rangs.rang like '%{$request->color}%'");
+//        $baza = DB::select("select * from rangs left join turs on turs.id=rangs.tur_id left join cats on cats.id=turs.cat_id where rangs.rang like '%{$request->color}%'");
+        $baza = rang::join('turs','turs.id','=','rangs.tur_id')->join('cats','cats.id','=','rangs.cat_id')->where('rangs.rang','like', "%{$request->color}%")->get();
         return response()->json(['colors'=>$baza]);
     }
 }

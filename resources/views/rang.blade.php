@@ -72,13 +72,12 @@
                                             </td>
 
                                             <?
-                                                           if(isset($baza->miqdor))
-                                                           {
-
-                                                               $miqdors = 0;
-                                                               $miqdor = $miqdors+$baza->miqdor;
-                                                            }
-                                                            ?>
+                                                if(isset($baza->miqdor))
+                                                {
+                                                    $miqdors = 0;
+                                                    $miqdor = $miqdors+$baza->miqdor;
+                                                }
+                                                ?>
                                             <td class="font-weight-medium text-dark border-top-0">
                                                 <a href="kid/{{ $baza->id }}" class="btn btn-success pil"><i
                                                         class="fas fa-plus"></i></a>
@@ -188,7 +187,7 @@
                     e.preventDefault();
                     summa = 0;
                     miqdori = 0;
-                    rsoni = 0;
+                    rsoni = 0; 
                 
                     $(".bir").empty();
                   
@@ -239,7 +238,7 @@
                     url: "{{ route('ajaxdate') }}",
                     method: 'post',
                     data: {
-                        desc: $(this).val(),
+                        desc: $(this).val(), 
                         tests1: $(".sel").val(),
                         tests2: $(".sel_ar").val()
                     },

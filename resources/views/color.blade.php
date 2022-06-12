@@ -27,7 +27,7 @@
                                 </tr>
                             </thead>
                             <tbody class="bir area">
-                                @foreach ($bazas as $baza)
+                                @foreach ($bazas as $baza) 
                                     @if (isset($baza->tur->kat->cat))
                                         <tr>
                                             <td class="border-top-0 p-2">
@@ -53,6 +53,7 @@
 
                             </tbody>
                         </table>
+                        {{ $bazas->links() }}
                     </div>
                 </div>
             </div>
@@ -79,7 +80,7 @@
                          result.colors.forEach(col)
                          function col(item,index) 
                         {  
-                            $(".area").html($(".area").html()+"<tr><td class='border-top-0 p-2'><div class='d-flex no-block align-items-center'><div><h5 class='mb-0 font-16 font-weight-medium'>"+item.cat+"</h5></div></div></td><td class='border-top-0 text-muted p-2'>"+item.turi+"</td><td class='border-top-0 text-center'>"+item.rang+"</td><td class='font-weight-medium text-dark border-top-0'><a href='rangdel/{{ $baza->id }}'class='delete '><span></span></a></td></tr>");
+                            $(".area").html($(".area").html()+"<tr><td class='border-top-0 p-2'><div class='d-flex no-block align-items-center'><div><h5 class='mb-0 font-16 font-weight-medium'>"+item.cat+"</h5></div></div></td><td class='border-top-0 text-muted p-2'>"+item.turi+"</td><td class='border-top-0 text-center'>"+item.rang+"</td><td class='font-weight-medium text-dark border-top-0'><a href='updateC/{{ $baza->id }}' class='btn btn-success'><i class='fas fa-edit'></i></a><a href='{{ $baza->id }} 'class='btn btn-danger'><i class='fas fa-trash'></i></a></td></tr>"); 
                         }
                     }
                 });

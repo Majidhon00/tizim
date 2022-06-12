@@ -205,7 +205,6 @@
                             result.month3.forEach(mont3);
 
                             function mont3(item2, index2) {
-                                console.log(item2.miqdor);
                                 if (item.cat_id == item2.cat_id && item.tur_id == item2
                                     .tur_id && item.cidd == item2.rang_id && $(".month")
                                 .val() ==
@@ -234,8 +233,7 @@
                                 )
 
                             } else {
-                                $(".bir").html($(".bir").html() +
-                                    "<tr><td>Malumot mavjud emas</td></tr>");
+                            
                             }
 
                             miqdori = miqdori + umiqdori;
@@ -306,10 +304,6 @@
                                     // "' class='del btn btn-danger' ><i class='fas fa-trash'></i></a></td>
                                 )
                             } else {
-
-                                $(".bir").html($(".bir").html() +
-                                    "<tr><td>Malumot mavjud emas</td></tr>");
-
                             }
 
 
