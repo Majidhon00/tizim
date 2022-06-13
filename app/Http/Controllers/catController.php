@@ -18,7 +18,6 @@ class catController extends Controller
         $baza = cat::paginate(10);
         return view('kategorya',['bazas'=>$baza]);
     }
-
     /**
      * Show the form for creating a new resource.
      *
@@ -38,7 +37,11 @@ class catController extends Controller
     public function store(Request $request)
     {
         $baza = new cat;
-        $baza->create($request->all());
+        $baz = $request->validate([
+            'cat'=>'required'
+        ]);
+        $baza->cat = $baz['cat'];
+        $baza->save();
         return back()->with('success','Yozildi');
     }
 

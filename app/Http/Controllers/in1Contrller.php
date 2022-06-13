@@ -44,7 +44,15 @@ class in1Contrller extends Controller
     public function store(Request $request)
     {
         $baza = new tur;
-        $baza->create($request->all());
+        $baz = $request->validate([
+            'narxi'=>'required',
+            'turi'=>'required',
+            'cat_id'=>'required'
+        ]);
+        $baza->turi = $baz['turi'];
+        $baza->narxi = $baz['narxi'];
+        $baza->c_id = $baz['c_id'];
+        $baza->save();
         return back()->with('success','Yozildi');
     }
 
@@ -93,7 +101,7 @@ class in1Contrller extends Controller
     public function destroy($id)
     {
         //
-    }
+    } 
     public function up($id)
     {
         $baza = tur::find($id);

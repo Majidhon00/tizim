@@ -19,8 +19,8 @@ class RangController extends Controller
      */
     public function index()
     {
-        $items = cat::all();
-        $bazas = rang::OrderByDesc('created_at')->get();
+        $items = DB::table('cats')->select('cats.id','cats.cat')->get();
+        $bazas = rang::OrderBy('id','DESC')->paginate(10);
         return view('rang', ['bazas' => $bazas, 'items' => $items]);
     }
 
@@ -43,18 +43,19 @@ class RangController extends Controller
      */
     public function store(Request $request)
     {
-        // $kirimbase = new kirim;
-        // $kirimbase->miqdor=$request->miqdori;
-        // $kirimbase->r_soni=$request->rulon;
-        // $kirimbase->cat_id=$request->cat_id;
-        // $kirimbase->tur_id=$request->tur_id;
-        // $kirimbase->rang_id=$request->id;
-        // $kirimbase->tip=1;
-        // $kirimbase->create();
-
         $baza = new rang;
-        $baza->create($request->all());
-        return back();
+        $validate = $request->validate([
+            'cat_id'=>'required',
+            'tur_id'=>'required',
+            'rang'=>'required'
+        ]);
+        $baza->cat_id = $validate['cat_id'];
+        $baza->tur_id = $validate['tur_id'];
+        $baza->rang = $validate['rang'];
+        $baza->rulon = $request->rulon;
+        $baza->miqdori = $request->miqdori;
+        $baza->save();
+        return back()->with('success','yozildi');
     }
 
     /**
@@ -105,12 +106,16 @@ class RangController extends Controller
     }
     public function ajaxdata(Request $request)
     {
-        $data = DB::select("SELECT * from  turs  where cat_id=" . $request->test11);
+        // $data = DB::select("SELECT * from  turs  where cat_id=" . $request->test11);
+        $data = tur::where('cat_id','=',$request->test11)->get();
+
         if ($request->test11 == 0) {
             // $baza = DB::select("select * from rangs left join turs on rangs.tur_id=turs.id left join cats on turs.cat_id=cats.id");
+        
             $baza = rang::join('turs', 'rangs.tur_id', '=', 'turs.id')->join('cats', 'turs.cat_id', '=', 'cats.id')->get();
         } else {
             // $baza = DB::select("select * from rangs left join turs on rangs.tur_id=turs.id left join cats on turs.cat_id=cats.id where rangs.cat_id=".$request->test11);
+        
             $baza = rang::join('turs', 'rangs.tur_id', '=', 'turs.id')->join('cats', 'turs.cat_id', '=', 'cats.id')->where('rangs.cat_id', '=', $request->test11)->get();
         }
         return response()->json(['test' => $baza, 'data' => $data]);

@@ -64,7 +64,6 @@
                                                 </div>
                                             </td>
                                             <td class="border-top-0 text-muted p-2">{{ $baza->tur->turi }}</td>
-
                                             <td class="border-top-0 text-center">{{ $baza->rang }}</td>
                                             <td class="border-top-0 text-center">{{ $baza->miqdori }}</td>
                                             <td class="border-top-0 text-center">{{ $baza->rulon }}</td>
@@ -81,8 +80,6 @@
                                             <td class="font-weight-medium text-dark border-top-0">
                                                 <a href="kid/{{ $baza->id }}" class="btn btn-success pil"><i
                                                         class="fas fa-plus"></i></a>
-
-
                                                 <a href="kid2/{{ $baza->id }}" class="btn btn-dark min"><i
                                                         class="fas fa-minus"></i></a>
                                                 <a href="{{ route('rang.show', ['rang' => $baza->id]) }}"
@@ -133,6 +130,7 @@
 
                             </tbody>
                         </table>
+                        {{ $bazas->links() }}
                     </div>
                 </div>
             </div>
@@ -167,22 +165,6 @@
                     'X-CSRF-TOKEN': $('meta[name="_token"]').attr('content')
                 }
             });
-
-         
-
-            // [ ======== select categoria ========= ]
-
-            // $(".asc").click(function (e) { 
-            //     e.preventDefault();
-            //     $(".dss").val('null')
-            //      $(".ass").val($(".asc").attr('href'));
-            // });
-            // $(".desc").click(function (e) { 
-            //     e.preventDefault();
-            //     $(".ass").val('null')
-            //     $(".dss").val($(".desc").attr('href'));
-            // });
-         
                 $(".desc").click(function(e) {
                     e.preventDefault();
                     summa = 0;

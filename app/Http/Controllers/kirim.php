@@ -154,26 +154,20 @@ class kirim extends Controller
     }
     public function ajaxsel(Request $request)
     {
-        $data = tur::where('cat_id','=',$request->test11);
+        $data = tur::where('cat_id','=',$request->test11)->get();
          if ($request->test11 == 0) {
             $baza = ModelsKirim::join('rangs', 'kirims.rang_id', '=', 'rangs.id')->join('turs', 'rangs.tur_id', '=', 'turs.id')->join('cats','turs.cat_id', '=', 'cats.id')->limit(10)->get();
                 
                 
                 
         } else {
-            $baza = rang::join('turs', 'rangs.tur_id', '=', 'turs.id')
-                ->join('cats', 'turs.cat_id', '=', 'cats.id')
-                ->where('rangs.cat_id', '=', $request->test11)
-                ->get();
+            $baza = rang::join('turs', 'rangs.tur_id', '=', 'turs.id')->join('cats', 'turs.cat_id', '=', 'cats.id')->where('rangs.cat_id', '=', $request->test11)->get();
         }
         return response()->json(['test' => $baza, 'data' => $data]);
     }
     public function ajaxbase2(Request $request)
     {
-        $baza2 = rang::join('turs', 'rangs.tur_id', '=', 'turs.id')
-            ->join('cats', 'turs.cat_id', '=', 'cats.id')
-            ->where('rangs.tur_id', '=', $request->test)
-            ->get();
+        $baza2 = rang::join('turs', 'rangs.tur_id', '=', 'turs.id')->join('cats', 'turs.cat_id', '=', 'cats.id')->where('rangs.tur_id', '=', $request->test)->get();
         return response()->json(['test2' => $baza2]);
     }
     public function view(ModelsKirim $id)

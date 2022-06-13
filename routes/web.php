@@ -28,7 +28,7 @@ Route::get('/index', function () {
 });
   
 // show tug'irleman
-
+ 
 Route::resource('admin',in1Contrller::class); 
 
 Route::resource('kirim',kirim::class);
