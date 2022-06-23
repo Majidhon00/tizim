@@ -52,7 +52,6 @@ Route::get('view/{id}',[kirim::class,'view']);
 Route::get('catedit/{catedit}',[catController::class,'catedit'])->name('catedit');
 Route::get('adminedit/{id}',[in1Contrller::class,'adminedit']);
 Route::post('ajaxdata',[RangController::class,'ajaxdata'])->name('ajaxdata');
-Route::post('ajaxdate',[RangController::class,'ajaxdate'])->name('ajaxdate');
 Route::post('ajaxdat',[RangController::class,'ajaxdat'])->name('ajaxdat');
 Route::post('ajaxbase',[RangController::class,'ajaxbase'])->name('ajaxbase');
 Route::post('ajaxbase2',[kirim::class,'ajaxbase2'])->name('ajaxbase2');

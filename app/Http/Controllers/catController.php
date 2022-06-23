@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\cat;
+use App\Services\in1Services;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 
@@ -99,11 +100,13 @@ class catController extends Controller
     {
         if($request->catb=='all')
         {
-            $cats = cat::orderBy('id','DESC')->get();
+            $service = new in1Services();
+            $cats = $service->in1Create();
         }   
         if($request->cata=='all')
         {
-            $cats = cat::orderBy('id','DESC')->get();
+            $service = new in1Services();
+            $cats = $service->in1Create();
         } else
         {
             $cats = cat::where('cat','LIKE',"%{$request->cata}%")->get();    

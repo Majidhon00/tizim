@@ -31,7 +31,7 @@ class RangController extends Controller
      */
     public function create()
     {
-        $cats = cat::orderBy('id','DESC')->get();
+
         return view('create.rang', ['cats' => $cats]);
     }
 

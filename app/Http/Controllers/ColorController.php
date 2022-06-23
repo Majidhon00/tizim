@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\cat;
 use App\Models\rang;
+use App\Services\in1Services;
 use Faker\Core\Color;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
@@ -60,7 +61,8 @@ class ColorController extends Controller
      */
     public function edit(rang $id)
     {
-        $cat = cat::orderBy('id','DESC')->get();
+       $service = new in1Services();
+       $cat = $service->in1Create();
         return view('update.color',['color'=>$id,'cats'=>$cat]);
     }
 

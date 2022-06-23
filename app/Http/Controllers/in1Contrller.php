@@ -6,10 +6,18 @@ use App\Models\cat;
 use App\Models\kirim;
 use App\Models\rang;
 use App\Models\tur;
+use App\Services\in1Services;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 
 class in1Contrller extends Controller
 {
+
+    private function services()
+    {
+        $service = new in1Services();
+    }
+
     /**
      * Display a listing of the resource.
      *
@@ -20,7 +28,6 @@ class in1Contrller extends Controller
  
         // $kirimlar = kirim::where('kirims.tur_id','=','turs.id')->get();
         $bazas = tur::paginate(10);
-
         return view('dashboard',['bazas'=>$bazas]);
     }
 
@@ -31,8 +38,9 @@ class in1Contrller extends Controller
      */
     public function create()
     {
-        $blogs = cat::orderBy('id','DESC')->get(); 
-        return view('create.in1_create',['blogs'=>$blogs]);
+        $this->services();
+        $item = $sevice->in1Create();
+        return view('create.in1_create',['blogs'=>$item->blogs]);
     }
 
     /**
@@ -51,7 +59,7 @@ class in1Contrller extends Controller
         ]);
         $baza->turi = $baz['turi'];
         $baza->narxi = $baz['narxi'];
-        $baza->c_id = $baz['c_id'];
+        $baza->cat_id = $baz['cat_id'];
         $baza->save();
         return back()->with('success','Yozildi');
     }
@@ -75,7 +83,8 @@ class in1Contrller extends Controller
      */
     public function edit(tur $admin)
     {
-        $blog = cat::orderBy('id','DESC')->get();
+        $this->services();
+        $item = $service->in1Create();
         return view('update.tur',['bazas'=>$admin ,'blogs'=>$blog]);
     }
 
@@ -110,12 +119,14 @@ class in1Contrller extends Controller
     }
     public function ajaxtur(Request $request)
     {
-        $baza = tur::join('cats','cats.id','=','turs.cat_id')->where('turi','LIKE',"%{$request->tur}%")->limit(10)->get();
+        $baza = DB::table('turs')->join('cats','cats.id','=','turs.cat_id')->select("turs.id AS t_id",'turs.*',"cats.*")->where('turi','LIKE',"%{$request->tur}%")->limit(10)->get();
+
         return response()->json(['turlar'=>$baza]);
     }
     public function adminedit(tur $id)
     {
-        $blog = cat::orderBy('id','DESC')->get();
+        $this->services();
+        $item = $service->in1Create();
         return view('update.tur',['bazas'=>$id ,'blogs'=>$blog]);
     }
 }

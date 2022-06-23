@@ -60,8 +60,9 @@ class kirim extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show()
+    public function show($id)
     {
+
     }
 
     /**
@@ -157,9 +158,7 @@ class kirim extends Controller
         $data = tur::where('cat_id','=',$request->test11)->get();
          if ($request->test11 == 0) {
             $baza = ModelsKirim::join('rangs', 'kirims.rang_id', '=', 'rangs.id')->join('turs', 'rangs.tur_id', '=', 'turs.id')->join('cats','turs.cat_id', '=', 'cats.id')->limit(10)->get();
-                
-                
-                
+
         } else {
             $baza = rang::join('turs', 'rangs.tur_id', '=', 'turs.id')->join('cats', 'turs.cat_id', '=', 'cats.id')->where('rangs.cat_id', '=', $request->test11)->get();
         }
